@@ -19,7 +19,7 @@ ReactDOM.render(
       <Route path="/noticia"  exact={true}  component={StoreNoticia}/>
       <Route path="/update/noticia/:id"  exact={true}  component={UpdateNoticia}/>
       <Route path="/delete/noticia/:id" exact={true} component={DeleteNoticia} />
-      <Route path="/Login" exact={true} component={Login} />
+      <Route path="/login" exact={true} component={Login} />
 
     </Switch>
   </BrowserRouter>,
