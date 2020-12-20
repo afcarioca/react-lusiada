@@ -30,7 +30,15 @@ export default class Login extends React.Component{
         
         console.log(this.state.token);    
         if(this.state.token != undefined){
-            this.props.history.push('/noticias');
+            this.props.history.push({
+                pathname : '/noticias',
+                state :{
+               
+                token : this.state.token,
+             
+                }
+                } 
+              );
         }
             
        

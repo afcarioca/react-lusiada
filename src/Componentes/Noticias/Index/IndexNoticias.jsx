@@ -15,7 +15,8 @@ export default class IndexNoticias extends React.Component{
     .then(res => res.json())
     .then((data) =>{
       this.setState({noticias: data})
-     console.log(this.state)
+     console.log(this.props.location.state.token);
+
     })
     .catch(console.log)
 
