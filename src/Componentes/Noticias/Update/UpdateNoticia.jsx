@@ -6,7 +6,8 @@ export default class UpdateNoticia extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            noticia: []
+            noticia: [],
+            token: ''
           }
           this.handleChange = this.handleChange.bind(this);
 

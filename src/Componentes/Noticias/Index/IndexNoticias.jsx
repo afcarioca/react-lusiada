@@ -6,16 +6,25 @@ export default class IndexNoticias extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      noticias: []
+      noticias: [],
+        
     }
   }
 
-  componentDidMount(){
-    fetch('http://localhost:8000/api/noticias')
+   componentDidMount(){
+  
+    let key = this.props.location.state.token;
+    
+     fetch('http://localhost:8000/api/noticias',{
+      method: 'GET',
+      headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
+
+      
+
+    })
     .then(res => res.json())
     .then((data) =>{
       this.setState({noticias: data})
-     console.log(this.props.location.state.token);
 
     })
     .catch(console.log)
