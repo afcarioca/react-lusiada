@@ -6,7 +6,7 @@ export default class IndexNoticias extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      noticias: [],
+      noticias: []
         
     }
   }
@@ -18,10 +18,7 @@ export default class IndexNoticias extends React.Component{
      fetch('http://localhost:8000/api/noticias',{
       method: 'GET',
       headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
-
-      
-
-    })
+   })
     .then(res => res.json())
     .then((data) =>{
       this.setState({noticias: data})
@@ -30,6 +27,11 @@ export default class IndexNoticias extends React.Component{
     .catch(console.log)
 
     
+  }
+
+  handleClick(e) {
+ 
+    console.log(e);
   }
 
   render(){
@@ -49,7 +51,9 @@ export default class IndexNoticias extends React.Component{
              <Link to={`/noticia/${noticia.id}`}>{noticia.resumo}</Link>
 
              </li>
-            <button><Link to={`update/noticia/${noticia.id}`}>Update</Link></button> 
+            
+            {/*<button><Link to={`update/noticia/${noticia.id}`} onClick={this.Atualizar}>Atualizar</Link></button> */}
+            <button onClick={() => this.handleClick(noticia.id)}>Atualizar</button>
             <button><Link to={`delete/noticia/${noticia.id}`}>Deletar</Link></button> 
 
              <hr/>

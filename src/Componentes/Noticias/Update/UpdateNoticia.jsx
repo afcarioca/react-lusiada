@@ -7,10 +7,9 @@ export default class UpdateNoticia extends React.Component{
         super(props);
         this.state = {
             noticia: [],
-            token: ''
+         
           }
           this.handleChange = this.handleChange.bind(this);
-
           this.handleSubmit = this.handleSubmit.bind(this);
     }
 
