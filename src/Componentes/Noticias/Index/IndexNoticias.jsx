@@ -29,6 +29,33 @@ export default class IndexNoticias extends React.Component{
     
   }
 
+  ShowNoticia(id){
+
+    this.props.history.push({
+      pathname : `/noticia/${id}`,
+      state :{
+     
+      token : this.props.location.state.token,
+   
+      }
+      } 
+    );
+ 
+  }
+
+  DeleteNoticia(id){
+    
+    this.props.history.push({
+      pathname : `/delete/noticia/${id}`,
+      state :{
+     
+      token : this.props.location.state.token,
+   
+      }
+      } 
+    );
+  }
+
   handleClick(id) {
 
     this.props.history.push({
@@ -58,13 +85,12 @@ export default class IndexNoticias extends React.Component{
                {noticia.foto}
              </li>
              <li className="Noticia_Resumo">
-             <Link to={`/noticia/${noticia.id}`}>{noticia.resumo}</Link>
-
+                <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}>{noticia.resumo}</a>
              </li>
             
-            {/*<button><Link to={`update/noticia/${noticia.id}`} >Atualizar</Link></button> */}
             <button onClick={() => this.handleClick(noticia.id)}>Atualizar</button>
-            <button><Link to={`delete/noticia/${noticia.id}`}>Deletar</Link></button> 
+            <button onClick={() => this.DeleteNoticia(noticia.id)}>Deletar</button>
+
 
              <hr/>
           </div>
