@@ -13,7 +13,7 @@ export default class IndexNoticias extends React.Component{
 
    componentDidMount(){
   
-    let key = this.props.location.state.token;
+    const key = this.props.location.state.token;
     
      fetch('http://localhost:8000/api/noticias',{
       method: 'GET',
@@ -29,9 +29,19 @@ export default class IndexNoticias extends React.Component{
     
   }
 
-  handleClick(e) {
+  handleClick(id) {
+
+    this.props.history.push({
+      pathname : `update/noticia/${id}`,
+      state :{
+     
+      token : this.props.location.state.token,
+   
+      }
+      } 
+    );
  
-    console.log(e);
+    
   }
 
   render(){
@@ -52,7 +62,7 @@ export default class IndexNoticias extends React.Component{
 
              </li>
             
-            {/*<button><Link to={`update/noticia/${noticia.id}`} onClick={this.Atualizar}>Atualizar</Link></button> */}
+            {/*<button><Link to={`update/noticia/${noticia.id}`} >Atualizar</Link></button> */}
             <button onClick={() => this.handleClick(noticia.id)}>Atualizar</button>
             <button><Link to={`delete/noticia/${noticia.id}`}>Deletar</Link></button> 
 
