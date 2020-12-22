@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Menu from "../../Menu/Menu";
+
 export default class IndexNoticias extends React.Component{
   
   constructor(props){
@@ -10,9 +12,13 @@ export default class IndexNoticias extends React.Component{
     }
   }
 
-   componentDidMount(){
+    componentDidMount(){
       const key = localStorage.getItem('token');
-      fetch('http://localhost:8000/api/noticias',{
+      if (key === null) {
+          this.props.history.push({pathname : `/login`});
+      }
+
+    fetch('http://localhost:8000/api/noticias',{
         method: 'GET',
         headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
       })
@@ -24,43 +30,45 @@ export default class IndexNoticias extends React.Component{
       .catch(console.log)
   }
 
-  ShowNoticia(id){
-    this.props.history.push({pathname : `/noticia/${id}`});
-  }
+      ShowNoticia(id){
+        this.props.history.push({pathname : `/noticia/${id}`});
+      }
 
-  DeleteNoticia(id){
-    this.props.history.push({ pathname : `/delete/noticia/${id}`});
-  }
+      DeleteNoticia(id){
+        this.props.history.push({ pathname : `/delete/noticia/${id}`});
+      }
 
-  UpdateNoticia(id) {
-    this.props.history.push({pathname : `update/noticia/${id}`});
-  }
+      UpdateNoticia(id) {
+        this.props.history.push({pathname : `update/noticia/${id}`});
+      }
 
   render(){
 
     return(
-      <ul>
-        {this.state.noticias.map((noticia, index) =>(
-          <div  key={index}>
-            <li className="Noticia_Titulo">
-             {noticia.titulo}
+      <div>
+          <Menu />
+          <ul>
+          {this.state.noticias.map((noticia, index) =>(
+            <div  key={index}>
+              <li className="Noticia_Titulo">
+              {noticia.titulo}
 
-             </li>
-             <li className="Noticia_Foto">
-               {noticia.foto}
-             </li>
-             <li className="Noticia_Resumo">
-                <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}>{noticia.resumo}</a>
-             </li>
-            
-            <button onClick={() => this.UpdateNoticia(noticia.id)}>Atualizar</button>
-            <button onClick={() => this.DeleteNoticia(noticia.id)}>Deletar</button>
-
-
-             <hr/>
-          </div>
-        ))}
-      </ul>
+              </li>
+              <li className="Noticia_Foto">
+                {noticia.foto}
+              </li>
+              <li className="Noticia_Resumo">
+                  <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}>{noticia.resumo}</a>
+              </li>
+              
+              <button onClick={() => this.UpdateNoticia(noticia.id)}>Atualizar</button>
+              <button onClick={() => this.DeleteNoticia(noticia.id)}>Deletar</button>
+                <hr/>
+            </div>
+          ))}
+        </ul>
+      </div>
+      
     );
   }
   

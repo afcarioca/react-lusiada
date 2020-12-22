@@ -14,6 +14,10 @@ export default class ShowNoticia extends React.Component{
     componentDidMount(){
         const id = this.props.match.params.id;
         const key = localStorage.getItem('token');
+        
+        if (key === null) {
+            this.props.history.push({pathname : `/login`});
+        }
         console.log(id);
         fetch(`http://localhost:8000/api/noticias/${id}`,{
         method: 'PUT',
@@ -25,14 +29,11 @@ export default class ShowNoticia extends React.Component{
             this.setState({noticia: data})
         })
         .catch(console.log)
-    
         
         }
     
     
-
-
-    render(){
+        render(){
        
        const noticia = this.state.noticia;
 

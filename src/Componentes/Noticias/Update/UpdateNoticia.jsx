@@ -1,4 +1,5 @@
 import React from 'react';
+import Menu from '../../Menu/Menu';
 
 
 export default class UpdateNoticia extends React.Component{
@@ -16,6 +17,11 @@ export default class UpdateNoticia extends React.Component{
    componentDidMount(){
     const id = this.props.match.params.id;
     const key = localStorage.getItem('token');
+   
+        
+        if (key === null) {
+            this.props.history.push({pathname : `/login`});
+        }
     fetch(`http://localhost:8000/api/noticias/${id}`,{
         method: 'GET',
         headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
@@ -33,6 +39,10 @@ export default class UpdateNoticia extends React.Component{
         event.preventDefault();
         const id = this.props.match.params.id;
         const key = localStorage.getItem('token');
+
+        if (key === null) {
+            this.props.history.push({pathname : `/login`});
+        }
 
        await fetch(`http://localhost:8000/api/noticias/${id}`, {
         method: 'PUT',
@@ -59,13 +69,18 @@ export default class UpdateNoticia extends React.Component{
 
        
         return(
-                <form onSubmit={this.handleSubmit}>
+
+            <div>
+                <Menu />
+                 <form onSubmit={this.handleSubmit}>
                     <input ref={(ref) => {this.titulo = ref}} placeholder="Título" type="text" name="titulo" value={noticia.titulo} onChange={this.handleChange}/><br />
                     <input ref={(ref) => {this.resumo = ref}} placeholder="Resumo" type="text" name="resumo" value={noticia.resumo}  onChange={this.handleChange}/><br />
                     <input ref={(ref) => {this.conteudo = ref}} placeholder="Conteúdo" type="text" name="conteudo" value={noticia.conteudo}  onChange={this.handleChange}/><br />
                     <input ref={(ref) => {this.foto = ref}} placeholder="Foto" type="text" name="foto" value={noticia.foto}  onChange={this.handleChange}/><br />
                     <input type="submit" value="Submit" />
                </form>
+            </div>
+               
             );
       }
 }

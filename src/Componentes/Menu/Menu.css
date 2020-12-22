@@ -1,0 +1,15 @@
+
+.Menu-Nav{
+}
+
+.Menu-Lista{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.Menu-Lista li{
+
+    list-style-type: none;
+  
+}
