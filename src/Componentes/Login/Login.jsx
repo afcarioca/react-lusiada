@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Login.css'; 
 
 export default class Login extends React.Component{
     constructor(props){
@@ -12,8 +12,8 @@ export default class Login extends React.Component{
     }
 
 
-    async handleSubmit(event){ 
-        event.preventDefault();
+    async handleSubmit(){ 
+     
         await fetch('http://localhost:8000/api/login', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -53,12 +53,13 @@ export default class Login extends React.Component{
      render(){
 
         return(
-            <form onSubmit={this.handleSubmit}>
-                <input ref={(ref) => {this.email = ref}} placeholder="Usuário" type="email" name="email"/><br />
-                <input ref={(ref) => {this.password = ref}} placeholder="Senha" type="password" name="password"/><br />
-               
-               <input type="submit" value="Submit" />
+            <form autoComplete="off" className="Login-Form" onSubmit={this.handleSubmit}>
+                <input className="Login-Input Login-Input-Email" ref={(ref) => {this.email = ref}} placeholder="Email" type="email" name="email"/><br />
+                <input  className="Login-Input Login-Input-Senha" ref={(ref) => {this.password = ref}} placeholder="Senha" type="password" name="password"/><br />
+            
+            <input className="Login-Input Login-Input-Botao" type="submit" value="Entrar" />
             </form>
+        
         );
       }
 }

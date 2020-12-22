@@ -1,0 +1,100 @@
+.Login-Form{
+    border: 4px solid black;
+    margin: 200px auto;
+    height: 250px;
+    text-align: center;
+    padding-top: 110px;
+}
+
+.Login-Input{
+    border-radius: 40px;
+    margin-top: 10px;
+    width: 200px;
+    padding: 20px;
+   
+
+}
+
+.Login-Input::-webkit-input-placeholder {
+    color: black;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.Login-Input:focus{
+    border-radius: 40px;
+    margin-top: 10px;
+    width: 200px;
+    padding: 20px;
+    outline: none;
+
+}
+
+
+
+.Login-Input:focus::-webkit-input-placeholder{
+    transition: 2s;
+    color:blue;
+    font-size: 10px;
+
+}
+
+
+
+
+.Login-Input-Email{
+
+}
+
+.Login-Input-Senha{
+
+}
+
+.Login-Input-Botao{
+
+    background-color:blue;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    width: 250px;
+}
+
+.Login-Input-Botao:hover{
+
+    transition: 1s;
+    background-color:aquamarine;
+    color: white;
+    font-weight: bolder;
+}
+/*
+input::-webkit-input-placeholder {
+    color: #999;
+}
+input:focus::-webkit-input-placeholder {
+    color: red;
+}
+
+
+input:-moz-placeholder {
+    color: #999;
+}
+input:focus:-moz-placeholder {
+    color: red;
+}
+
+
+input::-moz-placeholder {
+    color: #999;
+}
+input:focus::-moz-placeholder {
+    color: red;
+}
+
+input:-ms-input-placeholder {
+    color: #999;
+}
+input:focus:-ms-input-placeholder {
+    color: red;
+}
+
+*/
