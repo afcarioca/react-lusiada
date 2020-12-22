@@ -5,15 +5,16 @@ export default class Login extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            token : ''
+            token : '',
+            dados:'',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
 
-    async handleSubmit(){ 
-     
+    async handleSubmit(event){ 
+        event.preventDefault();
         await fetch('http://localhost:8000/api/login', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -27,38 +28,35 @@ export default class Login extends React.Component{
         ).catch(error =>
              console.log(error.response)
         )
-        
-        console.log(this.state.token);    
+        localStorage.setItem('token', this.state.token)
+
+           
         if(this.state.token != undefined){
             this.props.history.push({
                 pathname : '/noticias',
                 state :{
-               
-                token : this.state.token,
-             
+                        token : localStorage.getItem('token'),
                 }
-                } 
-              );
+            });
+        } else{
+            this.setState({dados: 'Dados Inválidos!'});
         }
-            
-       
-
-      
-     
-
     };
-
-   
-
-     render(){
-
+    
+    render(){
+        const dadosInvalidos = this.state.dados;
         return(
-            <form autoComplete="off" className="Login-Form" onSubmit={this.handleSubmit}>
-                <input className="Login-Input Login-Input-Email" ref={(ref) => {this.email = ref}} placeholder="Email" type="email" name="email"/><br />
-                <input  className="Login-Input Login-Input-Senha" ref={(ref) => {this.password = ref}} placeholder="Senha" type="password" name="password"/><br />
+            <div>
             
-            <input className="Login-Input Login-Input-Botao" type="submit" value="Entrar" />
-            </form>
+                <form autoComplete="off" className="Login-Form" onSubmit={this.handleSubmit} method="POST">
+                    <div className="Login-Dados-Invalidos">{dadosInvalidos}</div>
+                    <input className="Login-Input Login-Input-Email" ref={(ref) => {this.email = ref}} placeholder="Email" type="email" name="email"/><br />
+                    <input  className="Login-Input Login-Input-Senha" ref={(ref) => {this.password = ref}} placeholder="Senha" type="password" name="password"/><br />
+                
+                    <input className="Login-Input Login-Input-Botao" type="submit" value="Entrar" />
+                </form>
+            </div>
+           
         
         );
       }

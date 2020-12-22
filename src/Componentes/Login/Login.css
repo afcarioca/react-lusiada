@@ -6,6 +6,12 @@
     padding-top: 110px;
 }
 
+.Login-Dados-Invalidos{
+    color: red;
+    font-weight: bolder;
+}
+
+
 .Login-Input{
     border-radius: 40px;
     margin-top: 10px;
@@ -52,7 +58,7 @@
 
 .Login-Input-Botao{
 
-    background-color:blue;
+    background-color:cyan;
     color: white;
     font-weight: bolder;
     font-size: 20px;
@@ -62,8 +68,8 @@
 .Login-Input-Botao:hover{
 
     transition: 1s;
-    background-color:aquamarine;
-    color: white;
+    background-color:blue;
+    color: black;
     font-weight: bolder;
 }
 /*

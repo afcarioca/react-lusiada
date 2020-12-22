@@ -6,9 +6,7 @@ export default class DeleteNoticia extends React.Component{
 
     componentDidMount(){
         const id = this.props.match.params.id;
-        const key = this.props.location.state.token;
-
-        console.log(id);
+        const key = localStorage.getItem('token');
         fetch(`http://localhost:8000/api/noticias/${id}`, { 
             method: 'DELETE',
             headers: {'Content-Type':'application/json','Authorization':'Bearer ' +key},

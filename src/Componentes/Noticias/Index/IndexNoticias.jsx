@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default class IndexNoticias extends React.Component{
   
@@ -12,63 +11,29 @@ export default class IndexNoticias extends React.Component{
   }
 
    componentDidMount(){
-  
-    const key = this.props.location.state.token;
-    
-     fetch('http://localhost:8000/api/noticias',{
-      method: 'GET',
-      headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
-   })
-    .then(res => res.json())
-    .then((data) =>{
-      this.setState({noticias: data})
+      const key = localStorage.getItem('token');
+      fetch('http://localhost:8000/api/noticias',{
+        method: 'GET',
+        headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
+      })
+      .then(res => res.json())
+      .then((data) =>{
+        this.setState({noticias: data})
 
-    })
-    .catch(console.log)
-
-    
+      })
+      .catch(console.log)
   }
 
   ShowNoticia(id){
-
-    this.props.history.push({
-      pathname : `/noticia/${id}`,
-      state :{
-     
-      token : this.props.location.state.token,
-   
-      }
-      } 
-    );
- 
+    this.props.history.push({pathname : `/noticia/${id}`});
   }
 
   DeleteNoticia(id){
-    
-    this.props.history.push({
-      pathname : `/delete/noticia/${id}`,
-      state :{
-     
-      token : this.props.location.state.token,
-   
-      }
-      } 
-    );
+    this.props.history.push({ pathname : `/delete/noticia/${id}`});
   }
 
-  handleClick(id) {
-
-    this.props.history.push({
-      pathname : `update/noticia/${id}`,
-      state :{
-     
-      token : this.props.location.state.token,
-   
-      }
-      } 
-    );
- 
-    
+  UpdateNoticia(id) {
+    this.props.history.push({pathname : `update/noticia/${id}`});
   }
 
   render(){
@@ -88,7 +53,7 @@ export default class IndexNoticias extends React.Component{
                 <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}>{noticia.resumo}</a>
              </li>
             
-            <button onClick={() => this.handleClick(noticia.id)}>Atualizar</button>
+            <button onClick={() => this.UpdateNoticia(noticia.id)}>Atualizar</button>
             <button onClick={() => this.DeleteNoticia(noticia.id)}>Deletar</button>
 
 

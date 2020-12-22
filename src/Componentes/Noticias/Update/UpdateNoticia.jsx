@@ -15,7 +15,7 @@ export default class UpdateNoticia extends React.Component{
 
    componentDidMount(){
     const id = this.props.match.params.id;
-    const key = this.props.location.state.token;
+    const key = localStorage.getItem('token');
     fetch(`http://localhost:8000/api/noticias/${id}`,{
         method: 'GET',
         headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
@@ -32,7 +32,7 @@ export default class UpdateNoticia extends React.Component{
     async handleSubmit(event){ 
         event.preventDefault();
         const id = this.props.match.params.id;
-        const key = this.props.location.state.token;
+        const key = localStorage.getItem('token');
 
        await fetch(`http://localhost:8000/api/noticias/${id}`, {
         method: 'PUT',
@@ -45,14 +45,7 @@ export default class UpdateNoticia extends React.Component{
             })
         });
 
-        this.props.history.push({
-            pathname : `/noticias`,
-            state :{
-           
-            token : this.props.location.state.token,
-         
-            }
-        });
+        this.props.history.push({pathname : `/noticias`});
     };
 
     handleChange(event) {
@@ -66,17 +59,14 @@ export default class UpdateNoticia extends React.Component{
 
        
         return(
-        
-               <form onSubmit={this.handleSubmit}>
-                <input ref={(ref) => {this.titulo = ref}} placeholder="Título" type="text" name="titulo" value={noticia.titulo} onChange={this.handleChange}/><br />
-                <input ref={(ref) => {this.resumo = ref}} placeholder="Resumo" type="text" name="resumo" value={noticia.resumo}  onChange={this.handleChange}/><br />
-                <input ref={(ref) => {this.conteudo = ref}} placeholder="Conteúdo" type="text" name="conteudo" value={noticia.conteudo}  onChange={this.handleChange}/><br />
-                <input ref={(ref) => {this.foto = ref}} placeholder="Foto" type="text" name="foto" value={noticia.foto}  onChange={this.handleChange}/><br />
-
-               <input type="submit" value="Submit" />
-            </form>
-      
-        );
+                <form onSubmit={this.handleSubmit}>
+                    <input ref={(ref) => {this.titulo = ref}} placeholder="Título" type="text" name="titulo" value={noticia.titulo} onChange={this.handleChange}/><br />
+                    <input ref={(ref) => {this.resumo = ref}} placeholder="Resumo" type="text" name="resumo" value={noticia.resumo}  onChange={this.handleChange}/><br />
+                    <input ref={(ref) => {this.conteudo = ref}} placeholder="Conteúdo" type="text" name="conteudo" value={noticia.conteudo}  onChange={this.handleChange}/><br />
+                    <input ref={(ref) => {this.foto = ref}} placeholder="Foto" type="text" name="foto" value={noticia.foto}  onChange={this.handleChange}/><br />
+                    <input type="submit" value="Submit" />
+               </form>
+            );
       }
 }
 

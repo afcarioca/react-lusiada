@@ -13,7 +13,7 @@ export default class ShowNoticia extends React.Component{
 
     componentDidMount(){
         const id = this.props.match.params.id;
-        const key = this.props.location.state.token;
+        const key = localStorage.getItem('token');
         console.log(id);
         fetch(`http://localhost:8000/api/noticias/${id}`,{
         method: 'PUT',
