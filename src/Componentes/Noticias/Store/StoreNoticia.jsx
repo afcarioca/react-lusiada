@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from '../../Menu/Menu';
+import axios from 'axios';
 
 export default class StoreNoticia extends React.Component{
 
@@ -16,55 +17,37 @@ export default class StoreNoticia extends React.Component{
             }
         }
 
-        /*
+     
+
         handleSubmit(event){ 
             event.preventDefault();
             const key = localStorage.getItem('token');
-            console.log(key);
+            const formData = new FormData();
+            formData.append('foto', this.foto.files[0]);
+            formData.append('titulo', this.titulo.value);
+            formData.append('resumo', this.resumo.value);
+            formData.append('conteudo', this.conteudo.value);
+
             if (key === null) {
                 this.props.history.push({pathname : `/login`});
             }
-            fetch('http://localhost:3333/noticias', {
-            method: 'POST',
-            headers: {'Authorization':'Bearer ' +key,'Content-Type':'application/json'},
-            body: JSON.stringify({
-            "titulo": this.titulo.value,
-            "resumo": this.resumo.value,
-            "conteudo": this.conteudo.value,
-            "foto": this.foto.value,
-            }) 
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:3333/noticias',
+            data: formData,
+            headers: {'Content-Type': 'multipart/form-data', 'Authorization':'Bearer ' +key }
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
             });
-
+            
             this.props.history.push({pathname : `/noticias`});
-
-        };
-        */
-
-       handleSubmit(event){ 
-        event.preventDefault();
-        const key = localStorage.getItem('token');
-        console.log(key);
-        const data = new FormData();
-        data.append('file', this.foto.value);
-        console.log(data);
-        if (key === null) {
-            this.props.history.push({pathname : `/login`});
         }
-        fetch('http://localhost:3333/noticias', data, {
-        method: 'POST',
-        headers: {'Authorization':'Bearer ' +key, 'Accept': "multipart/form-data",
-        'Content-Type': 'multipart/form-data'},
-        body: JSON.stringify({
-        "titulo": this.titulo.value,
-        "resumo": this.resumo.value,
-        "conteudo": this.conteudo.value,
-        "foto": data,
-        }) 
-        });
-
-        this.props.history.push({pathname : `/noticias`});
-
-     };
+      
 
     render(){
 
@@ -72,7 +55,7 @@ export default class StoreNoticia extends React.Component{
 
             <div>
                 <Menu />
-                 <form onSubmit={this.handleSubmit} >
+                 <form id="myForm" onSubmit={this.handleSubmit} method="post" encType="multipart/form-data" >
                     <input ref={(ref) => {this.titulo = ref}} placeholder="Título" type="text" name="titulo"/><br />
                     <input ref={(ref) => {this.resumo = ref}} placeholder="Resumo" type="text" name="resumo"/><br />
                     <input ref={(ref) => {this.conteudo = ref}} placeholder="Conteúdo" type="text" name="conteudo"/><br />

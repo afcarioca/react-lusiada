@@ -34,14 +34,16 @@ export default class ShowNoticia extends React.Component{
         }
     
     
-        render(){
+      render(){
        
        const noticia = this.state.noticia;
+       const imageBaseUrl = "http://localhost:3333/uploads/";
+
         return(
           <div>
             
               <h1>{noticia.titulo}</h1>
-              <div><img src={noticia.foto} /></div>
+              <div><img src={`${imageBaseUrl}${noticia.foto}`}/></div>
               <h3>{noticia.resumo}</h3>
               <p>{noticia.conteudo}</p>
           </div>

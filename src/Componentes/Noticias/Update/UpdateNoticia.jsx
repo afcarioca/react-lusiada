@@ -8,8 +8,7 @@ export default class UpdateNoticia extends React.Component{
         super(props);
         this.state = {
             noticia: [],
-         
-          }
+        }
           this.handleChange = this.handleChange.bind(this);
           this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -18,10 +17,10 @@ export default class UpdateNoticia extends React.Component{
     const id = this.props.match.params.id;
     const key = localStorage.getItem('token');
    
-        
-        if (key === null) {
-            this.props.history.push({pathname : `/login`});
-        }
+    if (key === null) {
+        this.props.history.push({pathname : `/login`});
+    }
+
     fetch(`http://localhost:3333/noticia/${id}`,{
         method: 'GET',
         headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
