@@ -4,13 +4,13 @@ import React from 'react';
 export default class DeleteNoticia extends React.Component{
     
 
-    componentDidMount(){
+    async componentDidMount(){
         const id = this.props.match.params.id;
         const key = localStorage.getItem('token');
         if (key === null) {
             this.props.history.push({pathname : `/login`});
         }
-        fetch(`http://localhost:8000/api/noticias/${id}`, { 
+        await fetch(`http://localhost:3333/noticia/${id}`, { 
             method: 'DELETE',
             headers: {'Content-Type':'application/json','Authorization':'Bearer ' +key},
  

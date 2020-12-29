@@ -14,20 +14,20 @@ export default class IndexNoticias extends React.Component{
 
     componentDidMount(){
       const key = localStorage.getItem('token');
+    
       if (key === null) {
           this.props.history.push({pathname : `/login`});
       }
 
-    fetch('http://localhost:8000/api/noticias',{
+    fetch('http://localhost:3333/noticias',{
         method: 'GET',
         headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
       })
       .then(res => res.json())
       .then((data) =>{
-        this.setState({noticias: data})
+        this.setState({noticias: data.noticias})
 
-      })
-      .catch(console.log)
+      }).catch(console.log)
   }
 
       ShowNoticia(id){
@@ -43,7 +43,7 @@ export default class IndexNoticias extends React.Component{
       }
 
   render(){
-
+    const imageBaseUrl = "http://localhost:3333/uploads/";
     return(
       <div>
           <Menu />
@@ -55,7 +55,7 @@ export default class IndexNoticias extends React.Component{
 
               </li>
               <li className="Noticia_Foto">
-                {noticia.foto}
+                <img src={`${imageBaseUrl}${noticia.foto}`}/>
               </li>
               <li className="Noticia_Resumo">
                   <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}>{noticia.resumo}</a>

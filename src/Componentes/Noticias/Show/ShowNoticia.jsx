@@ -14,19 +14,20 @@ export default class ShowNoticia extends React.Component{
     componentDidMount(){
         const id = this.props.match.params.id;
         const key = localStorage.getItem('token');
-        
+
         if (key === null) {
             this.props.history.push({pathname : `/login`});
         }
         console.log(id);
-        fetch(`http://localhost:8000/api/noticias/${id}`,{
-        method: 'PUT',
+        fetch(`http://localhost:3333/noticia/${id}`,{
+        method: 'GET',
         headers: {'Content-Type':'application/json','Authorization':'Bearer ' +key},
         
         })
         .then(res => res.json())
         .then((data) =>{
-            this.setState({noticia: data})
+            this.setState({noticia: data.noticia})
+            console.log(data.noticia);
         })
         .catch(console.log)
         
@@ -36,13 +37,11 @@ export default class ShowNoticia extends React.Component{
         render(){
        
        const noticia = this.state.noticia;
-
-
         return(
           <div>
             
               <h1>{noticia.titulo}</h1>
-              <div>{noticia.foto}</div>
+              <div><img src={noticia.foto} /></div>
               <h3>{noticia.resumo}</h3>
               <p>{noticia.conteudo}</p>
           </div>

@@ -22,13 +22,13 @@ export default class UpdateNoticia extends React.Component{
         if (key === null) {
             this.props.history.push({pathname : `/login`});
         }
-    fetch(`http://localhost:8000/api/noticias/${id}`,{
+    fetch(`http://localhost:3333/noticia/${id}`,{
         method: 'GET',
         headers:{'Authorization':'Bearer ' +key,'Content-Type':'application/json'}
     })
     .then(res => res.json())
     .then((data) =>{
-        this.setState({noticia: data})
+        this.setState({noticia: data.noticia})
     })
     .catch(console.log)
 
@@ -44,7 +44,7 @@ export default class UpdateNoticia extends React.Component{
             this.props.history.push({pathname : `/login`});
         }
 
-       await fetch(`http://localhost:8000/api/noticias/${id}`, {
+       await fetch(`http://localhost:3333/noticia/${id}`, {
         method: 'PUT',
         headers: {'Content-Type':'application/json','Authorization':'Bearer ' +key},
         body: JSON.stringify({
