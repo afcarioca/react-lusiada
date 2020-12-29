@@ -9,7 +9,7 @@ export default class StoreNoticia extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         
     }
-
+    
         componentDidMount(){
             const key = localStorage.getItem('token');
             if (key === null) {

@@ -1,14 +1,47 @@
+.Login-Container{
+    margin-top: 100px;
+}
+
+.Login-Logo{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.Login-Logo img{
+    width: 150px;
+
+    
+}
+
 .Login-Form{
-    border: 4px solid black;
-    margin: 200px auto;
+    margin: auto;
     height: 250px;
     text-align: center;
-    padding-top: 110px;
+    padding-top: 35px;
 }
+
+
 
 .Login-Dados-Invalidos{
     color: red;
     font-weight: bolder;
+    -webkit-animation: blinker 3s ;
+    -moz-animation: blinker 3s;
+    animation: blinker 3s infinite ;
+    animation-fill-mode: forwards;
+
+    
+
+
+
+}
+
+@keyframes blinker {
+  0%   {opacity: 0;}
+  25%  {opacity: 0.25;}
+  50%  {opacity: 0.5;}
+  75%  {opacity: 0.75;}
+  100% {opacity: 1;}
 }
 
 
@@ -21,7 +54,16 @@
 
 }
 
+
+
+
 .Login-Input::-webkit-input-placeholder {
+    color: black;
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.Login-Input::-moz-placeholder {
     color: black;
     font-weight: bolder;
     font-size: 15px;
@@ -45,21 +87,17 @@
 
 }
 
-
-
-
-.Login-Input-Email{
-
-}
-
-.Login-Input-Senha{
+.Login-Input:focus::-moz-placeholder{
+    transition: 2s;
+    color:blue;
+    font-size: 10px;
 
 }
 
 .Login-Input-Botao{
 
     background-color:cyan;
-    color: white;
+    color: black;
     font-weight: bolder;
     font-size: 20px;
     width: 250px;
@@ -69,38 +107,39 @@
 
     transition: 1s;
     background-color:blue;
-    color: black;
+    color: white;
     font-weight: bolder;
 }
-/*
-input::-webkit-input-placeholder {
-    color: #999;
-}
-input:focus::-webkit-input-placeholder {
-    color: red;
+
+@media screen and (max-width: 275px){
+    .Login-Input-Botao{
+        background-color:cyan;
+        color: black;
+        font-weight: bolder;
+        font-size: 20px;
+        width:200px;
+    }
+    
+    
+    .Login-Input-Email{
+        border-radius: 40px;
+        margin-top: 10px;
+        width: 150px;
+        padding: 20px;
+       
+    
+    }
+
+    .Login-Input-Senha{
+        border-radius: 40px;
+        margin-top: 10px;
+        width: 150px;
+        padding: 20px;
+       
+    
+    }
+
+    
 }
 
 
-input:-moz-placeholder {
-    color: #999;
-}
-input:focus:-moz-placeholder {
-    color: red;
-}
-
-
-input::-moz-placeholder {
-    color: #999;
-}
-input:focus::-moz-placeholder {
-    color: red;
-}
-
-input:-ms-input-placeholder {
-    color: #999;
-}
-input:focus:-ms-input-placeholder {
-    color: red;
-}
-
-*/

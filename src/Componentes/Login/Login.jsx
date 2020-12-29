@@ -1,6 +1,6 @@
 import React from 'react';
 import './Login.css'; 
-
+import logo from './logo.jpg';
 
 export default class Login extends React.Component{
     constructor(props){
@@ -47,9 +47,11 @@ export default class Login extends React.Component{
     render(){
         const dadosInvalidos = this.state.dados;
         return(
-            <div>
-            
-                <form className="Login-Form" onSubmit={this.handleSubmit} method="POST">
+            <div className="Login-Container">
+                    <div className="Login-Logo"><img src={logo}/></div>
+                <form  autoComplete="off" className="Login-Form" onSubmit={this.handleSubmit} method="POST">
+                
+
                     <div className="Login-Dados-Invalidos">{dadosInvalidos}</div>
                     <input className="Login-Input Login-Input-Email" ref={(ref) => {this.email = ref}} placeholder="Email" type="email" name="email"/><br />
                     <input  className="Login-Input Login-Input-Senha" ref={(ref) => {this.password = ref}} placeholder="Senha" type="password" name="password"/><br />

@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import HomeNoticias from './Componentes/Noticias/Home/HomeNoticias';
+import HomeNoticia from './Componentes/Noticias/Home/HomeNoticia';
+
+
 import IndexNoticias from './Componentes/Noticias/Index/IndexNoticias';
 import ShowNoticia from './Componentes/Noticias/Show/ShowNoticia';
 import StoreNoticia from './Componentes/Noticias/Store/StoreNoticia';
@@ -14,12 +18,17 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+     
+
       <Route path="/noticias"  exact={true} component={IndexNoticias} />
       <Route path="/noticia/:id"  exact={true}  component={ShowNoticia}/>
       <Route path="/noticia"  exact={true}  component={StoreNoticia}/>
       <Route path="/update/noticia/:id"  exact={true}  component={UpdateNoticia}/>
       <Route path="/delete/noticia/:id" exact={true} component={DeleteNoticia} />
       <Route path="/login" exact={true} component={Login} />
+   
+      <Route path="/"  exact={true} component={HomeNoticias} />
+      <Route path="/:id"  exact={true} component={HomeNoticia} />
 
     </Switch>
   </BrowserRouter>,
