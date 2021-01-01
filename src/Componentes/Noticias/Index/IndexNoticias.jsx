@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Menu from "../../Menu/Menu";
+import "../Home/HomeNoticias.css"
 
 export default class IndexNoticias extends React.Component{
   
@@ -64,17 +65,17 @@ export default class IndexNoticias extends React.Component{
     return(
       <div>
           <Menu />
-          <ul>
+          <ul className="HomeNoticias-Lista">
           {this.state.noticias.map((noticia, index) =>(
             <div  key={index}>
-              <li className="Noticia_Titulo">
+              <li className="HomeNoticias-Titulo">
               {noticia.titulo}
 
               </li>
-              <li className="Noticia_Foto">
+              <li className="HomeNoticias-Foto">
               <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}><img src={`${imageBaseUrl}${noticia.foto}`}/></a>
               </li>
-              <li className="Noticia_Resumo">
+              <li className="HomeNoticias-Resumo">
                   <a href="" onClick={() =>  this.ShowNoticia(noticia.id)}>{noticia.resumo}</a>
               </li>
               

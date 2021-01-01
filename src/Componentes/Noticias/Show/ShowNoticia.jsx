@@ -1,5 +1,6 @@
 import React from 'react';
-
+import Menu from '../../Menu/Menu'
+import "../Home/HomeNoticia.css"
 
 export default class ShowNoticia extends React.Component{
     
@@ -41,12 +42,16 @@ export default class ShowNoticia extends React.Component{
 
         return(
           <div>
-            
-              <h1>{noticia.titulo}</h1>
-              <div><img src={`${imageBaseUrl}${noticia.foto}`}/></div>
-              <h3>{noticia.resumo}</h3>
-              <p>{noticia.conteudo}</p>
+               <Menu />
+               <div  className="HomeNoticia-Noticia">
+              
+                  <h1 className="HomeNoticia-Titulo">{noticia.titulo}</h1>
+                  <div  className="HomeNoticia-Foto"><img src={`${imageBaseUrl}${noticia.foto}`}/></div>
+                  <h3 className="HomeNoticia-Resumo">{noticia.resumo}</h3>
+                  <p className="HomeNoticia-Conteudo">{noticia.conteudo}</p>
+               </div>
           </div>
+          
         );
       }
 }

@@ -1,0 +1,32 @@
+.StoreNoticia{
+    border: 1px solid black;
+    
+}
+.StoreNoticia .StoreNoticia-Form input{
+
+    border-radius: 50px;
+    height: 30px;
+    width: 300px;
+}
+
+
+
+.StoreNoticia .StoreNoticia-Form input:focus{
+  
+    outline: none;
+
+}
+.StoreNoticia .StoreNoticia-Form input, textarea{
+    margin-top: 20px;
+}
+
+
+@media screen and (max-width:377px){
+    .StoreNoticia .StoreNoticia-Form input{
+        width: 250px;
+    }
+}
+
+
+
+

@@ -1,4 +1,7 @@
 import React from 'react';
+import MenuInicial from '../../Menu/MenuIncial';
+import '../../Menu/Menu.css';
+import './HomeNoticia.css';
 
 
 export default class HomeNoticia extends React.Component{
@@ -37,11 +40,14 @@ export default class HomeNoticia extends React.Component{
 
         return(
           <div>
-            
-              <h1>{noticia.titulo}</h1>
-              <div><img src={`${imageBaseUrl}${noticia.foto}`}/></div>
-              <h3>{noticia.resumo}</h3>
-              <p>{noticia.conteudo}</p>
+              <MenuInicial />
+              <div className="HomeNoticia-Noticia">
+                <h1 className="HomeNoticia-Titulo">{noticia.titulo}</h1>
+                <div className="HomeNoticia-Foto"><img src={`${imageBaseUrl}${noticia.foto}`}/></div>
+                <h3 className="HomeNoticia-Resumo">{noticia.resumo}</h3>
+                <p className="HomeNoticia-Conteudo">{noticia.conteudo}</p>
+              </div>
+           
           </div>
         );
       }

@@ -1,15 +1,60 @@
 
 .Menu-Nav{
+    height: 100px;
+    background-color: aqua;
 }
 
 .Menu-Lista{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 30px 50px;
 
 }
 
 .Menu-Lista li{
-
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     list-style-type: none;
+    font-weight: bolder;
   
+}
+
+.Menu-Lista li a{
+    text-decoration: none;
+    color: gray;
+
+}
+
+@media screen and (max-width: 875px){
+    .Menu-Lista li{
+        font-size: 16px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        list-style-type: none;
+        font-weight: bolder;
+      
+    }
+    
+    
+}
+
+@media screen and (max-width: 597px){
+    .Menu-Lista li{
+        font-size: 13px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        list-style-type: none;
+        font-weight: bolder;
+      
+    }
+    
+}
+
+@media screen and (max-width: 500px){
+    .Menu-Lista li{
+        font-size: 10px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        list-style-type: none;
+        font-weight: bolder;
+      
+    }
+    
 }

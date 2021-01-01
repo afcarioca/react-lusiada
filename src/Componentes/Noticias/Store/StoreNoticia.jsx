@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../../Menu/Menu';
 import axios from 'axios';
+import './StoreNoticia.css'
 
 export default class StoreNoticia extends React.Component{
 
@@ -55,19 +56,17 @@ export default class StoreNoticia extends React.Component{
 
             <div>
                 <Menu />
-                 <form id="myForm" onSubmit={this.handleSubmit} method="post" encType="multipart/form-data" >
-                    <input ref={(ref) => {this.titulo = ref}} placeholder="Título" type="text" name="titulo"/><br />
-                    <input ref={(ref) => {this.resumo = ref}} placeholder="Resumo" type="text" name="resumo"/><br />
-                    <input ref={(ref) => {this.conteudo = ref}} placeholder="Conteúdo" type="text" name="conteudo"/><br />
-                    
-                    
-                    {/*<input ref={(ref) => {this.foto = ref}} placeholder="Foto" type="text" name="foto"/><br />*/}
-
-                    <input ref={(ref) => {this.foto = ref}} placeholder="Foto" type="file" name="foto"/><br />
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
-           
+                <div  className="StoreNoticia">
+                   <form className="StoreNoticia-Form" id="myForm" onSubmit={this.handleSubmit} method="post" encType="multipart/form-data" >
+                        <input className="StoreNoticia-Input-Titulo" ref={(ref) => {this.titulo = ref}} placeholder="Título" type="text" name="titulo"/><br />
+                        <input  className="StoreNoticia-Input-Resumo" ref={(ref) => {this.resumo = ref}} placeholder="Resumo" type="text" name="resumo"/><br />
+                        <textarea className="StoreNoticia-Input-Conteudo"   ref={(ref) => {this.conteudo = ref}} placeholder="Conteúdo" type="text" name="conteudo"></textarea><br />
+                        <input className="StoreNoticia-Input-Foto" ref={(ref) => {this.foto = ref}} placeholder="Foto" type="file" name="foto"/><br />
+                        <input className="StoreNoticia-Input-Botao"  type="submit" value="Submit" />
+                    </form>
+                </div>
+             </div>
+            
         );
     }
 }
